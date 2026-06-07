@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" href="2568133-middle.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>София и Дмитрий | Свадебное приглашение</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #faf7f2;
+      background-image: radial-gradient(circle at 10% 20%, rgba(245, 235, 224, 0.4) 2%, transparent 2.5%),
+                        radial-gradient(circle at 85% 70%, rgba(215, 195, 170, 0.2) 1.5%, transparent 2%);
+      background-size: 40px 40px, 32px 32px;
+      font-family: 'Inter', sans-serif;
+      color: #4a3b2c;
+      line-height: 1.4;
+    }
+
+    .invitation-card {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #ffffffef;
+      border-radius: 0 0 48px 48px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .floral-border {
+      height: 12px;
+      background: linear-gradient(90deg, #f7e5d4, #e6cfb5, #f0dbca, #e6cfb5, #f7e5d4);
+      width: 100%;
+    }
+
+    /* Хедер с совместной фотографией — на весь экран, без скруглений */
+    .hero-photo-header {
+      position: relative;
+      background-image: url('i.webp'); /* ваше фото */
+      background-size: cover;
+      background-position: center 30%;
+      height: 100vh;
+      min-height: 560px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-photo-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(35, 25, 18, 0.45);
+      backdrop-filter: brightness(0.96);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 28rem 1.5rem 2rem;
+      max-width: 85%;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+    .hero-names span {
+      display: inline-block;
+      margin: 0 0.4rem;
+    }
+
+    .hero-date {
+      font-size: 1.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      background: rgba(255,245,235,0.2);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 0.2rem 1.8rem;
+      border-radius: 60px;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .hero-invite-text {
+      font-size: 1.05rem;
+      max-width: 550px;
+      margin: 0 auto;
+      font-weight: 400;
+      background: rgba(0,0,0,0.2);
+      padding: 0.6rem 1rem;
+      border-radius: 48px;
+      backdrop-filter: blur(3px);
+    }
+
+    .content-padding {
+      padding: 2.5rem 2rem 3rem;
+    }
+
+    @media (max-width: 700px) {
+      .hero-content { padding-top: 20rem; }
+      .hero-names { font-size: 2.8rem; }
+      .hero-date { font-size: 1.2rem; }
+      .content-padding { padding: 1.8rem 1.5rem 2.5rem; }
+    }
+
+    /* Календарь */
+    .date-calendar-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0 2rem;
+      align-items: center;
+      background: #fff8f2;
+      border-radius: 48px;
+      padding: 1.5rem;
+    }
+    .big-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: #b47c52;
+    }
+    .calendar-grid {
+      background: white;
+      border-radius: 32px;
+      padding: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      min-width: 260px;
+    }
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-weight: 500;
+      font-size: 0.8rem;
+      color: #b48357;
+    }
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      text-align: center;
+      margin-top: 5px;
+    }
+    .cal-day {
+      font-size: 0.9rem;
+      padding: 6px 0;
+      color: #5c4b38;
+    }
+    .cal-day.highlight {
+      background: #e6cfb5;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+    .cal-day.other-month {
+      color: #cfc2b4;
+    }
+
+    /* Программа */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      text-align: center;
+      border-bottom: 2px dashed #e7cfbc;
+      display: inline-block;
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.3rem;
+      color: #7c5a40;
+    }
+    .timeline-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      background: #fdf9f5;
+      border-radius: 40px;
+      padding: 1.8rem 1.5rem;
+    }
+    .timeline-item {
+      flex: 1;
+      text-align: center;
+      border-right: 1px solid #eddccd;
+    }
+    .timeline-item:last-child { border-right: none; }
+    .timeline-time {
+      font-weight: 700;
+      font-size: 1.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      color: #b98059;
+    }
+    .timeline-event {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6d523c;
+    }
+    @media (max-width: 700px) {
+      .timeline-grid { flex-direction: column; }
+      .timeline-item { border-right: none; border-bottom: 1px solid #eddccd; padding-bottom: 0.6rem; }
+    }
+
+    /* Локация + мини-карта */
+    .location-with-map {
+      background: #f7efe7;
+      border-radius: 32px;
+      padding: 1.8rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .address {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 0.5rem 0 1rem;
+      color: #4f3320;
+    }
+    .map-window {
+      margin-top: 1rem;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      background: #e0cfbf;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .map-window iframe {
+      width: 100%;
+      height: 220px;
+      border: 0;
+      display: block;
+    }
+    .map-link-icon {
+      margin-top: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      color: #ad7a55;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* Дресс-код + кружочки цветов */
+    .dresscode-card {
+      background: #fff5ed;
+      padding: 1.3rem 1.8rem;
+      border-radius: 60px 30px 60px 30px;
+      text-align: center;
+      margin: 2rem 0;
+
+    }
+    .dresscode-title {
+      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .color-palette {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+      background-color: #cfcfcf;
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .color-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border: 2px solid white;
+    }
+    .color-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #5d4230;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Контакты */
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      background: #ffffffdb;
+      border-radius: 48px;
+      padding: 1.3rem;
+      margin-top: 1.5rem;
+    }
+    .contact-card {
+      text-align: center;
+      background: #fcf7f2;
+      padding: 0.8rem 1.6rem;
+      border-radius: 60px;
+    }
+    .contact-number a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #3f2d1e;
+      font-size: 1.2rem;
+    }
+
+    /* Анкета — кнопка-ссылка на Яндекс Форму */
+    .anketa {
+      margin: 2rem 0 1rem;
+      text-align: center;
+    }
+    .btn-anketa {
+      background: #dbbf9f;
+      color: #2c241a;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-anketa:hover {
+      background: #c9a77d;
+      transform: scale(1.01);
+    }
+    .attendance-note {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #b27d59;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      padding: 1rem 0 0;
+      color: #ab8a6b;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+<div class="invitation-card">
+  <!-- Хедер с совместным фото на всю высоту экрана -->
+  <div class="hero-photo-header">
+    <div class="hero-content">
+      <div class="hero-names">
+        <span>София</span> и <span>Дмитрий</span>
+      </div>
+      <div class="hero-date">15 августа 2026</div>
+      <div class="hero-invite-text">
+        Дорогие друзья и родные!<br>
+        Приглашаем разделить с нами самый трогательный день.
+      </div>
+    </div>
+  </div>
+
+  <!-- Нижняя декоративная полоска после хедера -->
+  <div class="floral-border"></div>
+
+  <div class="content-padding">
+
+    <!-- Календарь с датой 15 августа 2026 -->
+    <div class="date-calendar-wrap">
+      <div class="date-main">
+        <div class="big-date">15</div>
+        <div style="font-size:1.2rem; letter-spacing:2px;">Август 2026</div>
+        <div style="font-size:0.9rem;">суббота</div>
+      </div>
+      <div class="calendar-grid">
+        <div class="calendar-weekdays">
+          <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
+        </div>
+        <div class="calendar-days" id="dynamicCalendar"></div>
+      </div>
+    </div>
+
+    <!-- Программа дня -->
+    <div style="text-align: center;">
+      <div class="section-title">Программа дня</div>
+    </div>
+    <div class="timeline-grid">
+      <div class="timeline-item"><div class="timeline-time">16:00</div><div class="timeline-event">Сбор гостей / Фуршет</div></div>
+      <div class="timeline-item"><div class="timeline-time">16:30</div><div class="timeline-event">Выездная церемония</div></div>
+      <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-event">Начало банкета</div></div>
+      <div class="timeline-item"><div class="timeline-time">20:00</div><div class="timeline-event">Свадебный торт</div></div>
+      <div class="timeline-item"><div class="timeline-time">23:00</div><div class="timeline-event">Завершение вечера</div></div>
+    </div>
+
+    <!-- Локация + мини-карта -->
+    <div class="location-with-map">
+      <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#b47c52;"></i>
+      <div class="address">
+        Выездная церемония и банкет пройдут по адресу:<br>
+        г. Шахты, р-п Каменоломни, ул. Свердлова 117
+      </div>
+      <div class="map-window">
+        <iframe 
+          src="https://yandex.ru/map-widget/v1/?mode=search&text=47.655927,40.206769&ll=40.206769,47.655927&z=17&pt=40.206769,47.655927,pm2rdm"
+          loading="lazy"
+          title="Карта места свадьбы">
+        </iframe>
+      </div>
+      <a href="https://yandex.ru/maps/?ll=40.206769,47.655927&z=17&pt=40.206769,47.655927&text=47.655927,40.206769" target="_blank" class="map-link-icon">
+        <i class="fas fa-external-link-alt"></i> Открыть большую карту
+      </a>
+    </div>
+
+    <!-- Контакты -->
+    <div class="contacts">
+      <div class="contact-card">
+        <div class="contact-label"><i class="fas fa-ring"></i> Жених</div>
+        <div class="contact-number"><a href="tel:+79934533757">+7 (993) 453-37-57</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label"><i class="fas fa-feather-alt"></i> Невеста</div>
+        <div class="contact-number"><a href="tel:+79614350646">+7 (961) 435-06-46</a></div>
+      </div>
+    </div>
+
+    <!-- Кнопка на Яндекс Форму -->
+    <div class="anketa">
+      <a href="https://forms.yandex.ru/u/6a256561f47e734183d5945a" target="_blank" class="btn-anketa">
+        <i class="fas fa-pen-alt"></i> Подтвердить присутствие
+      </a>
+    </div>
+    <div class="attendance-note">
+      <i class="far fa-heart"></i> Для нас главное — ваше присутствие! Перейдите по кнопке, чтобы заполнить форму.
+    </div>
+
+    <footer>
+    С нетерпением ждём встречи!<br>
+      София и Дмитрий
+    </footer>
+  </div>
+  <div class="floral-border"></div>
+</div>
+
+<script>
+  // Генерация календаря на АВГУСТ 2026, выделение 15 числа
+  function generateCalendar() {
+    const year = 2026, month = 7; // август (0-индекс)
+    const firstDay = new Date(year, month, 1).getDay();
+    let startOffset = (firstDay === 0 ? 6 : firstDay - 1);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const calendarDiv = document.querySelector(".calendar-days");
+    calendarDiv.innerHTML = "";
+    const prevMonthDays = new Date(year, month, 0).getDate();
+    for (let i = 0; i < startOffset; i++) {
+      const prevDay = prevMonthDays - startOffset + i + 1;
+      const daySpan = document.createElement("div");
+      daySpan.className = "cal-day other-month";
+      daySpan.innerText = prevDay;
+      calendarDiv.appendChild(daySpan);
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const daySpan = document.createElement("div");
+      daySpan.className = "cal-day";
+      if (d === 15) daySpan.classList.add("highlight");
+      daySpan.innerText = d;
+      calendarDiv.appendChild(daySpan);
+    }
+    const totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
+    const remaining = totalCells - (startOffset + daysInMonth);
+    for (let i = 1; i <= remaining; i++) {
+      const nextSpan = document.createElement("div");
+      nextSpan.className = "cal-day other-month";
+      nextSpan.innerText = i;
+      calendarDiv.appendChild(nextSpan);
+    }
+  }
+  generateCalendar();
+</script>
+</body>
+</html>
